@@ -39,7 +39,7 @@ pip3 install requests pillow
 `````
 
 
-##Usage
+## Usage
 
 To generate a badge, a few options are available, but to try the default you can simply use this command and replace `<username>` with your Root-Me username:
 
