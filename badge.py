@@ -59,7 +59,7 @@ class Badge:
         )
         # We want the pp's top left corner to at an offset from the top left corner of the badge
         offset = int(self.height * 0.1), int(self.height * 0.1)
-        self.badge.paste(pp, offset)
+        self.badge.paste(pp, offset, mask=pp)
 
     def __draw_username(self) -> None:
         size = int(self.height * 0.15)
@@ -150,7 +150,8 @@ class Badge:
             color=self.theme.background_color
         )
 
-        self.__draw_profile_picture()
+        if isfile(self.pp) : self.__draw_profile_picture()
+        else : print ("No pp")
         self.__draw_username()
         self.__draw_points()
         self.__draw_logo()
@@ -166,6 +167,7 @@ class Badge:
         if self.badge is None:
             self.create()
         self.badge.save(filepath)
+        print(f"Badge saved in {filepath}.")
 
     def show(self, viewer: str = None) -> None:
         if self.badge is None:

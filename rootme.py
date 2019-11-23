@@ -84,7 +84,7 @@ class RootMe:
         d["username"] = m[0] if len(m) == 1 else ""
 
         # Extracting the user's profile picture URL
-        regex = r"<h1\s+itemprop=\"givenName\"><img .*?logo_auteur.*?src=\"(.*?)\""
+        regex = r"<h1\s+itemprop=\"givenName\">\n<img .*?logo_auteur.*?src=\"(.*?)\""
         m = findall(regex, page)
         d["avatar_url"] = self.BASE + m[0] if len(m) == 1 else ""
 
@@ -133,6 +133,11 @@ class RootMe:
         regex = r"(?s)<b [\w=\"]*?>Rank :</b>\s*<span.*?>\s*(\w+)"
         m = findall(regex, page)
         d["rank"] = m[0] if len(m) == 1 else ""
+
+        #Extracting the user's score
+        regex = r"(?s)<b [\w=\"]*?>Challenges :</b>.*?<span.*?(\d+)&nbsp;Points"
+        m = findall(regex, page)
+        d["score"] = m[0] if len(m) == 1 else ""
 
         return d
 
