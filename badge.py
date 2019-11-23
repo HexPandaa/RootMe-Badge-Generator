@@ -152,7 +152,6 @@ class Badge:
         )
 
         if isfile(self.pp) : self.__draw_profile_picture()
-        else : print ("No pp")
         self.__draw_username()
         self.__draw_points()
         self.__draw_logo()
