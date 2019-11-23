@@ -59,7 +59,8 @@ class Badge:
         )
         # We want the pp's top left corner to at an offset from the top left corner of the badge
         offset = int(self.height * 0.1), int(self.height * 0.1)
-        self.badge.paste(pp, offset, mask=pp)
+        if pp.mode == "RGBA" : self.badge.paste(pp, offset, mask=pp)
+        else : self.badge.paste(pp, offset)
 
     def __draw_username(self) -> None:
         size = int(self.height * 0.15)
