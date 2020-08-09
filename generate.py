@@ -41,7 +41,7 @@ def parse_args():
                         choices=Badge.get_themes(), default="light",
                         help="The theme for the badge among " + ", ".join(Badge.get_themes()))
     parser.add_argument("--outfile", "-o", metavar="filepath", type=str,
-                        default="out/badge.png",
+                        default="badge.png",
                         help="The file to which the file will be saved (default: 'out/badge.png'")
     parser.add_argument("--show", "-s", action="store_true",
                         help="If the argument is present, shows the badge with the default viewer or the one specified"
