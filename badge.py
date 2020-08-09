@@ -57,10 +57,12 @@ class Badge:
             resample=Image.BICUBIC
             # resample=Image.NEAREST
         )
-        # We want the pp's top left corner to at an offset from the top left corner of the badge
+        # We want the pp's top left corner to be at an offset from the top left corner of the badge
         offset = int(self.height * 0.1), int(self.height * 0.1)
-        if pp.mode == "RGBA" : self.badge.paste(pp, offset, mask=pp)
-        else : self.badge.paste(pp, offset)
+        if pp.mode == "RGBA":
+            self.badge.paste(pp, offset, mask=pp)
+        else:
+            self.badge.paste(pp, offset)
 
     def __draw_username(self) -> None:
         size = int(self.height * 0.15)
@@ -151,7 +153,8 @@ class Badge:
             color=self.theme.background_color
         )
 
-        if isfile(self.pp) : self.__draw_profile_picture()
+        if isfile(self.pp):
+            self.__draw_profile_picture()
         self.__draw_username()
         self.__draw_points()
         self.__draw_logo()
